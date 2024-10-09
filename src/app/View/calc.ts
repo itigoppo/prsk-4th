@@ -974,8 +974,8 @@ export const useCalc = (): UseCalcReturn => {
 
     const vbsEvent = eventRankRange.filter(({ rank }) => rank === vbsEventRank)
     if (vbsEvent.length !== 0) {
-      orange += vbsEvent[0].petals
-      purple += vbsEvent[0].petals
+      white += vbsEvent[0].petals
+      blue += vbsEvent[0].petals
     }
 
     // ハピネス
