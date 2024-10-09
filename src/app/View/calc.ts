@@ -1646,7 +1646,7 @@ export const useCalc = (): UseCalcReturn => {
           orange += checkedPetals
         }
         if (selectedStampLiveCheer === "purplecasual") {
-          red += checkedPetals
+          purple += checkedPetals
         }
       }
 
