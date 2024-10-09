@@ -1540,7 +1540,7 @@ export const useCalc = (): UseCalcReturn => {
           orange += checkedPetals
         }
         if (selectedStampIroiroCheer === "purpleregular") {
-          red += checkedPetals
+          purple += checkedPetals
         }
       }
 
@@ -1565,7 +1565,7 @@ export const useCalc = (): UseCalcReturn => {
           orange += checkedPetals
         }
         if (selectedStampIroiroCheer === "purpleunlimited") {
-          red += checkedPetals
+          purple += checkedPetals
         }
       }
     }
@@ -1593,7 +1593,7 @@ export const useCalc = (): UseCalcReturn => {
           orange += checkedPetals
         }
         if (selectedStampGachiCheer === "purpleregular") {
-          red += checkedPetals
+          purple += checkedPetals
         }
       }
 
@@ -1618,7 +1618,7 @@ export const useCalc = (): UseCalcReturn => {
           orange += checkedPetals
         }
         if (selectedStampGachiCheer === "purpleunlimited") {
-          red += checkedPetals
+          purple += checkedPetals
         }
       }
     }
@@ -1671,7 +1671,7 @@ export const useCalc = (): UseCalcReturn => {
           orange += checkedPetals
         }
         if (selectedStampLiveCheer === "purpleregular") {
-          red += checkedPetals
+          purple += checkedPetals
         }
       }
     }
