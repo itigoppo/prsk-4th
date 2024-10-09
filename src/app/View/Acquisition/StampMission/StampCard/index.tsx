@@ -479,7 +479,7 @@ export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
       let typeLabel = null
       switch (type) {
         case "live":
-          typeLabel = "スタンプ"
+          typeLabel = "ライブ"
           level = state.acquisition.stamp.bloom.selectedStampLive
           break
         case "kizuna":
@@ -541,7 +541,7 @@ export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
       let typeLabel = null
       switch (type) {
         case "live":
-          typeLabel = "スタンプ"
+          typeLabel = "ライブ"
           level = state.acquisition.stamp.connect.selectedStampLive
           break
         case "kizuna":
@@ -603,7 +603,7 @@ export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
       let typeLabel = null
       switch (type) {
         case "live":
-          typeLabel = "スタンプ"
+          typeLabel = "ライブ"
           level = state.acquisition.stamp.cheer.selectedStampLive
           break
         case "kizuna":
