@@ -49,10 +49,10 @@ export const Result: FC<Props> = ({ state }) => {
           <div>
             {(selectedStampsBloom.length < 4 ||
               selectedStampsBloom.length > 4 ||
-              selectedStampsConnect.length < 4 ||
-              selectedStampsConnect.length > 4 ||
-              selectedStampsCheer.length < 4 ||
-              selectedStampsCheer.length > 4) && (
+              selectedStampsConnect.length < 3 ||
+              selectedStampsConnect.length > 3 ||
+              selectedStampsCheer.length < 3 ||
+              selectedStampsCheer.length > 3) && (
               <>
                 <Stack alignItems="center" direction="row" gap={1}>
                   <WarningOutlined
@@ -67,18 +67,18 @@ export const Result: FC<Props> = ({ state }) => {
                         {selectedStampsBloom.length}/4)
                       </div>
                     )}
-                    {(selectedStampsConnect.length < 4 ||
-                      selectedStampsConnect.length > 4) && (
+                    {(selectedStampsConnect.length < 3 ||
+                      selectedStampsConnect.length > 3) && (
                       <div>
                         CONNECT期間のスタンプカード枚数を見直してください (
-                        {selectedStampsConnect.length}/4)
+                        {selectedStampsConnect.length}/3)
                       </div>
                     )}
-                    {(selectedStampsCheer.length < 4 ||
-                      selectedStampsCheer.length > 4) && (
+                    {(selectedStampsCheer.length < 3 ||
+                      selectedStampsCheer.length > 3) && (
                       <div>
                         CHEER期間のスタンプカード枚数を見直してください (
-                        {selectedStampsCheer.length}/4)
+                        {selectedStampsCheer.length}/3)
                       </div>
                     )}
                   </div>

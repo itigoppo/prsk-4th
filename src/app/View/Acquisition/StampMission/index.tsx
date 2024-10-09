@@ -229,7 +229,8 @@ export const StampMission: FC<Props> = (props) => {
               <span className="font-bold">
                 {times === 1 && selectedStampsBloom.length}
                 {times === 2 && selectedStampsConnect.length}
-                {times === 3 && selectedStampsCheer.length} / 4
+                {times === 3 && selectedStampsCheer.length} /{" "}
+                {times === 1 ? 4 : 3}
               </span>
               枚
             </div>
