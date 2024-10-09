@@ -1699,7 +1699,7 @@ export const useCalc = (): UseCalcReturn => {
           orange += checkedPetals
         }
         if (selectedStampKizunaCheer === "purplecasual") {
-          red += checkedPetals
+          purple += checkedPetals
         }
       }
 
@@ -1724,7 +1724,7 @@ export const useCalc = (): UseCalcReturn => {
           orange += checkedPetals
         }
         if (selectedStampKizunaCheer === "purpleregular") {
-          red += checkedPetals
+          purple += checkedPetals
         }
       }
     }
