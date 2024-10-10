@@ -38,7 +38,7 @@ export const EventRanking: FC<Props> = ({ state, dispatch, times }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
+        <div className="space-y-2">
           {eventRankRange.map(({ rank, petals }, index) => (
             <div
               key={index}

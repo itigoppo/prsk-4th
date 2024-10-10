@@ -107,102 +107,92 @@ export const LiveMission: FC<Props> = ({ state, dispatch }) => {
           ライブミッション(〜10/31)
         </div>
 
-        <div className="flex gap-1">
-          <div
-            onClick={() => {
-              setIsComplete((state) => !state)
-              if (isComplete) {
-                dispatch.acquisition.setLiveMission(0)
-              } else {
-                dispatch.acquisition.setLiveMission(20000)
-              }
-            }}
-            className="hover:cursor-pointer"
-          >
-            <Stack alignItems="center" direction="row" gap={1}>
-              {isComplete ? (
-                <CheckBoxOutlined className="text-teal-600" />
-              ) : (
-                <CheckBoxOutlineBlank />
-              )}
-              <div>コンプリート</div>
-            </Stack>
-          </div>
+        <div className="space-y-2">
+          <div className="flex gap-1">
+            <div
+              onClick={() => {
+                setIsComplete((state) => !state)
+                if (isComplete) {
+                  dispatch.acquisition.setLiveMission(0)
+                } else {
+                  dispatch.acquisition.setLiveMission(20000)
+                }
+              }}
+              className="hover:cursor-pointer"
+            >
+              <Stack alignItems="center" direction="row" gap={1}>
+                {isComplete ? (
+                  <CheckBoxOutlined className="text-teal-600" />
+                ) : (
+                  <CheckBoxOutlineBlank />
+                )}
+                <div>コンプリート</div>
+              </Stack>
+            </div>
 
-          <div
-            onClick={() => {
-              dispatch.acquisition.setIsPremiumLiveMission((state) => !state)
-            }}
-            className="hover:cursor-pointer"
-          >
-            <Stack alignItems="center" direction="row" gap={1}>
-              {state.acquisition.isPremiumLiveMission ? (
-                <CheckBoxOutlined className="text-teal-600" />
-              ) : (
-                <CheckBoxOutlineBlank />
-              )}
-              <div>プレパス加入済み</div>
-            </Stack>
-          </div>
-
-          <RequiredBadge
-            required={{
-              white:
-                liveMissionSchedule.reduce(function (acc, obj) {
+            <RequiredBadge
+              required={{
+                white: liveMissionSchedule.reduce(function (acc, obj) {
                   return acc + obj.white
-                }, 0) +
-                (!state.acquisition.isPremiumLiveMission
-                  ? 0
-                  : premiumLiveMissionSchedule.reduce(function (acc, obj) {
-                      return acc + obj.white
-                    }, 0)),
-              blue:
-                liveMissionSchedule.reduce(function (acc, obj) {
+                }, 0),
+                blue: liveMissionSchedule.reduce(function (acc, obj) {
                   return acc + obj.blue
-                }, 0) +
-                (!state.acquisition.isPremiumLiveMission
-                  ? 0
-                  : premiumLiveMissionSchedule.reduce(function (acc, obj) {
-                      return acc + obj.blue
-                    }, 0)),
-              green:
-                liveMissionSchedule.reduce(function (acc, obj) {
+                }, 0),
+                green: liveMissionSchedule.reduce(function (acc, obj) {
                   return acc + obj.green
-                }, 0) +
-                (!state.acquisition.isPremiumLiveMission
-                  ? 0
-                  : premiumLiveMissionSchedule.reduce(function (acc, obj) {
-                      return acc + obj.green
-                    }, 0)),
-              red:
-                liveMissionSchedule.reduce(function (acc, obj) {
+                }, 0),
+                red: liveMissionSchedule.reduce(function (acc, obj) {
                   return acc + obj.red
-                }, 0) +
-                (!state.acquisition.isPremiumLiveMission
-                  ? 0
-                  : premiumLiveMissionSchedule.reduce(function (acc, obj) {
-                      return acc + obj.red
-                    }, 0)),
-              orange:
-                liveMissionSchedule.reduce(function (acc, obj) {
+                }, 0),
+                orange: liveMissionSchedule.reduce(function (acc, obj) {
                   return acc + obj.orange
-                }, 0) +
-                (!state.acquisition.isPremiumLiveMission
-                  ? 0
-                  : premiumLiveMissionSchedule.reduce(function (acc, obj) {
-                      return acc + obj.orange
-                    }, 0)),
-              purple:
-                liveMissionSchedule.reduce(function (acc, obj) {
+                }, 0),
+                purple: liveMissionSchedule.reduce(function (acc, obj) {
                   return acc + obj.purple
-                }, 0) +
-                (!state.acquisition.isPremiumLiveMission
-                  ? 0
-                  : premiumLiveMissionSchedule.reduce(function (acc, obj) {
-                      return acc + obj.purple
-                    }, 0)),
-            }}
-          />
+                }, 0),
+              }}
+            />
+          </div>
+          <div className="flex gap-1">
+            <div
+              onClick={() => {
+                dispatch.acquisition.setIsPremiumLiveMission((state) => !state)
+              }}
+              className="hover:cursor-pointer"
+            >
+              <Stack alignItems="center" direction="row" gap={1}>
+                {state.acquisition.isPremiumLiveMission ? (
+                  <CheckBoxOutlined className="text-teal-600" />
+                ) : (
+                  <CheckBoxOutlineBlank />
+                )}
+                <div>プレパス加入済み</div>
+              </Stack>
+            </div>
+
+            <RequiredBadge
+              required={{
+                white: premiumLiveMissionSchedule.reduce(function (acc, obj) {
+                  return acc + obj.white
+                }, 0),
+                blue: premiumLiveMissionSchedule.reduce(function (acc, obj) {
+                  return acc + obj.blue
+                }, 0),
+                green: premiumLiveMissionSchedule.reduce(function (acc, obj) {
+                  return acc + obj.green
+                }, 0),
+                red: premiumLiveMissionSchedule.reduce(function (acc, obj) {
+                  return acc + obj.red
+                }, 0),
+                orange: premiumLiveMissionSchedule.reduce(function (acc, obj) {
+                  return acc + obj.orange
+                }, 0),
+                purple: premiumLiveMissionSchedule.reduce(function (acc, obj) {
+                  return acc + obj.purple
+                }, 0),
+              }}
+            />
+          </div>
         </div>
 
         <div>
