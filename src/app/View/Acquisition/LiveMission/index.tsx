@@ -199,6 +199,7 @@ export const LiveMission: FC<Props> = ({ state, dispatch }) => {
           <TextField
             label="到達済みライブP(max:20,000)"
             variant="outlined"
+            type="number"
             value={state.acquisition.liveMission}
             size="small"
             onChange={(e: ChangeEvent<HTMLInputElement>) => {

@@ -23,6 +23,7 @@ export const FesBonus: FC<Props> = ({ state, dispatch }) => {
           <TextField
             label="到達済みガチャボーナス"
             variant="outlined"
+            type="number"
             value={state.acquisition.fesBonus}
             size="small"
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
