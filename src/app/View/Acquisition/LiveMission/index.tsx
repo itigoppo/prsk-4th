@@ -9,7 +9,7 @@ import {
 } from "@mui/icons-material"
 import { Button, Stack, TextField } from "@mui/material"
 import clsx from "clsx"
-import { ChangeEvent, FC, useState } from "react"
+import { ChangeEvent, FC, useEffect, useState } from "react"
 import { UseCalcReturn } from "../../calc"
 import { liveMissionSchedule, premiumLiveMissionSchedule } from "../../constant"
 
@@ -95,6 +95,10 @@ export const LiveMission: FC<Props> = ({ state, dispatch }) => {
           purple: 0,
         }
   }
+
+  useEffect(() => {
+    setIsComplete(state.acquisition.liveMission >= 20000)
+  }, [state.acquisition.liveMission])
 
   return (
     <>
