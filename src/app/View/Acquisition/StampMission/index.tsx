@@ -217,10 +217,10 @@ export const StampMission: FC<Props> = (props) => {
           <div className="font-bold">カードの選択</div>
           <Stack alignItems="center" direction="row" gap={1}>
             {((times === 1 && selectedStampsBloom.length < 4) ||
-              (times === 2 && selectedStampsConnect.length < 4) ||
-              (times === 3 && selectedStampsCheer.length < 3) ||
-              (times === 1 && selectedStampsBloom.length > 3) ||
+              (times === 1 && selectedStampsBloom.length > 4) ||
+              (times === 2 && selectedStampsConnect.length < 3) ||
               (times === 2 && selectedStampsConnect.length > 3) ||
+              (times === 3 && selectedStampsCheer.length < 3) ||
               (times === 3 && selectedStampsCheer.length > 3)) && (
               <WarningOutlined className="text-yellow-500" />
             )}
