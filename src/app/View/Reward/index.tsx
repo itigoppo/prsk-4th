@@ -1,6 +1,6 @@
 "use client"
+import { UseCalcReturn } from "@/app/View/calc"
 import { FC } from "react"
-import { UseCalcReturn } from "../calc"
 import { Flowers } from "./Flowers"
 import { Petals } from "./Petals"
 

@@ -1,8 +1,8 @@
 import { RequiredBadge } from "@/app/components/atoms/RequiredBadge"
+import { UseCalcReturn } from "@/app/View/calc"
 import { RadioButtonChecked, RadioButtonUnchecked } from "@mui/icons-material"
 import { Stack } from "@mui/material"
 import { FC } from "react"
-import { UseCalcReturn } from "../../calc"
 
 type Props = UseCalcReturn & { times: number }
 

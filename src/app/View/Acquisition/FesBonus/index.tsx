@@ -1,6 +1,6 @@
+import { UseCalcReturn } from "@/app/View/calc"
 import { TextField } from "@mui/material"
 import { ChangeEvent, FC } from "react"
-import { UseCalcReturn } from "../../calc"
 
 type Props = UseCalcReturn
 

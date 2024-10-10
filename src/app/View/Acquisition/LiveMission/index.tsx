@@ -1,5 +1,10 @@
 "use client"
 import { RequiredBadge } from "@/app/components/atoms/RequiredBadge"
+import { UseCalcReturn } from "@/app/View/calc"
+import {
+  liveMissionSchedule,
+  premiumLiveMissionSchedule,
+} from "@/app/View/constant"
 import {
   CheckBox,
   CheckBoxOutlineBlank,
@@ -10,8 +15,6 @@ import {
 import { Button, Stack, TextField } from "@mui/material"
 import clsx from "clsx"
 import { ChangeEvent, FC, useEffect, useState } from "react"
-import { UseCalcReturn } from "../../calc"
-import { liveMissionSchedule, premiumLiveMissionSchedule } from "../../constant"
 
 type Props = UseCalcReturn
 

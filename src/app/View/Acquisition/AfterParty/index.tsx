@@ -1,5 +1,5 @@
+import { UseCalcReturn } from "@/app/View/calc"
 import { FC } from "react"
-import { UseCalcReturn } from "../../calc"
 
 type Props = UseCalcReturn
 

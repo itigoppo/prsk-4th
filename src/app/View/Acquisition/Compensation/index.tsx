@@ -1,7 +1,7 @@
+import { UseCalcReturn } from "@/app/View/calc"
 import { CheckBoxOutlineBlank, CheckBoxOutlined } from "@mui/icons-material"
 import { Stack } from "@mui/material"
 import { FC } from "react"
-import { UseCalcReturn } from "../../calc"
 
 type Props = UseCalcReturn
 
