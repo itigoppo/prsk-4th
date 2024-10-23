@@ -1,6 +1,5 @@
-"use client"
 import { RequiredBadge } from "@/app/components/atoms/RequiredBadge"
-import { UseCalcReturn } from "@/app/View/calc"
+import { useFortuneFlowerContext } from "@/app/Context"
 import {
   Stamp,
   stampGachiRegular,
@@ -14,24 +13,20 @@ import {
   stampLoginCasual,
   stampLoginRegular,
 } from "@/app/View/constant"
-import {
-  CheckBoxOutlineBlank,
-  CheckBoxOutlined,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-} from "@mui/icons-material"
-import { Button, Stack } from "@mui/material"
+import { CheckBoxOutlineBlank, CheckBoxOutlined } from "@mui/icons-material"
+import { Alert, Stack } from "@mui/material"
 import clsx from "clsx"
 import { FC, useEffect, useMemo, useState } from "react"
 
-type Props = UseCalcReturn & {
+type Props = {
   times: number
   type: "iroiro" | "gachi" | "live" | "kizuna" | "login"
 }
 
-export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
+export const StampCard: FC<Props> = ({ times, type }) => {
+  const { state, dispatch } = useFortuneFlowerContext()
+
   const [isComplete, setIsComplete] = useState<boolean>(false)
-  const [expanded, setExpanded] = useState<boolean>(false)
 
   const stamp: Stamp | null = useMemo(() => {
     if (type === "iroiro") {
@@ -460,13 +455,13 @@ export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
 
       switch (level) {
         case "whiteregular":
-          return `${typeLabel}・ホワイトレギュラー`
+          return `ホワイト ${typeLabel}カード レギュラー`
         case "whiteunlimited":
-          return `${typeLabel}・ホワイトアンリミテッド`
+          return `ホワイト ${typeLabel}カード アンリミテッド`
         case "blueregular":
-          return `${typeLabel}・ブルーレギュラー`
+          return `ブルー ${typeLabel}カード レギュラー`
         case "blueunlimited":
-          return `${typeLabel}・ブルーアンリミテッド`
+          return `ブルー ${typeLabel}カード アンリミテッド`
         default:
           break
       }
@@ -494,13 +489,13 @@ export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
 
       switch (level) {
         case "whitecasual":
-          return `${typeLabel}・ホワイトカジュアル`
+          return `ホワイト ${typeLabel}カード カジュアル`
         case "whiteregular":
-          return `${typeLabel}・ホワイトレギュラー`
+          return `ホワイト ${typeLabel}カード レギュラー`
         case "bluecasual":
-          return `${typeLabel}・ブルーカジュアル`
+          return `ブルー ${typeLabel}カード カジュアル`
         case "blueregular":
-          return `${typeLabel}・ブルーレギュラー`
+          return `ブルー ${typeLabel}カード レギュラー`
         default:
           break
       }
@@ -522,13 +517,13 @@ export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
 
       switch (level) {
         case "greenregular":
-          return `${typeLabel}・グリーンレギュラー`
+          return `グリーン ${typeLabel}カード レギュラー`
         case "greenunlimited":
-          return `${typeLabel}・グリーンアンリミテッド`
+          return `グリーン ${typeLabel}カード アンリミテッド`
         case "redregular":
-          return `${typeLabel}・レッドレギュラー`
+          return `レッド ${typeLabel}カード レギュラー`
         case "redunlimited":
-          return `${typeLabel}・レッドアンリミテッド`
+          return `レッド ${typeLabel}カード アンリミテッド`
         default:
           break
       }
@@ -556,13 +551,13 @@ export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
 
       switch (level) {
         case "greencasual":
-          return `${typeLabel}・グリーンカジュアル`
+          return `グリーン ${typeLabel}カード カジュアル`
         case "greenregular":
-          return `${typeLabel}・グリーンレギュラー`
+          return `グリーン ${typeLabel}カード レギュラー`
         case "redcasual":
-          return `${typeLabel}・レッドカジュアル`
+          return `レッド ${typeLabel}カード カジュアル`
         case "redregular":
-          return `${typeLabel}・レッドレギュラー`
+          return `レッド ${typeLabel}カード レギュラー`
         default:
           break
       }
@@ -584,13 +579,13 @@ export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
 
       switch (level) {
         case "orangeregular":
-          return `${typeLabel}・オレンジレギュラー`
+          return `オレンジ ${typeLabel}カード レギュラー`
         case "orangeunlimited":
-          return `${typeLabel}・オレンジアンリミテッド`
+          return `オレンジ ${typeLabel}カード アンリミテッド`
         case "purpleregular":
-          return `${typeLabel}・パープルレギュラー`
+          return `パープル ${typeLabel}カード レギュラー`
         case "purpleunlimited":
-          return `${typeLabel}・パープルアンリミテッド`
+          return `パープル ${typeLabel}カード アンリミテッド`
         default:
           break
       }
@@ -618,13 +613,13 @@ export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
 
       switch (level) {
         case "orangecasual":
-          return `${typeLabel}・オレンジカジュアル`
+          return `オレンジ ${typeLabel}カード カジュアル`
         case "orangeregular":
-          return `${typeLabel}・オレンジレギュラー`
+          return `オレンジ ${typeLabel}カード レギュラー`
         case "purplecasual":
-          return `${typeLabel}・パープルカジュアル`
+          return `パープル ${typeLabel}カード カジュアル`
         case "purpleregular":
-          return `${typeLabel}・パープルレギュラー`
+          return `パープル ${typeLabel}カード レギュラー`
         default:
           break
       }
@@ -1013,9 +1008,11 @@ export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
     <>
       {stamp && (
         <div className="space-y-2">
-          <div className="font-bold border-red-300 border-l-8 pl-2">
-            {label}
+          <div className="border-l-8 border-red-300 pl-2 font-bold">
+            {label}のミッション
           </div>
+          <Alert severity="info">達成したミッションを選択</Alert>
+
           <div
             onClick={() => {
               onClickComplete()
@@ -1028,27 +1025,16 @@ export const StampCard: FC<Props> = ({ state, dispatch, times, type }) => {
               ) : (
                 <CheckBoxOutlineBlank />
               )}
-              <div>コンプリート</div>
+              <div className="font-bold text-pink-600">コンプリート</div>
               <RequiredBadge required={completeRequired} />
             </Stack>
           </div>
-
-          <Button
-            variant={expanded ? "contained" : "outlined"}
-            size="small"
-            onClick={() => {
-              setExpanded((state) => !state)
-            }}
-            endIcon={expanded ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-          >
-            ミッションを個別でみる
-          </Button>
 
           <div
             className={clsx(
               (type === "login" || type === "kizuna") &&
                 "grid grid-cols-2 gap-2",
-              !expanded && "hidden",
+              "border-t border-gray-500 pt-3",
             )}
           >
             {stamp.missions.map((mission, index) => (

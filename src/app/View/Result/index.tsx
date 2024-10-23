@@ -1,12 +1,12 @@
-import { UseCalcReturn } from "@/app/View/calc"
+import { useFortuneFlowerContext } from "@/app/Context"
 import { EnergySavingsLeaf, WarningOutlined } from "@mui/icons-material"
 import { Button, Stack } from "@mui/material"
 import clsx from "clsx"
 import { FC } from "react"
 
-type Props = UseCalcReturn
+export const Result: FC = () => {
+  const { state } = useFortuneFlowerContext()
 
-export const Result: FC<Props> = ({ state }) => {
   const selectedStampsBloom = [
     state.acquisition.stamp.bloom.selectedStampIroiro,
     state.acquisition.stamp.bloom.selectedStampLive,
@@ -34,9 +34,9 @@ export const Result: FC<Props> = ({ state }) => {
 
   return (
     <>
-      <div className="sticky bottom-0 bg-slate-600 px-4 py-2 text-xs text-white z-50">
+      <div className="sticky bottom-0 z-50 bg-slate-600 px-4 py-2 text-xs text-white">
         <div className="relative space-y-2">
-          <div className="absolute top-1 right-1">
+          <div className="absolute right-1 top-1">
             <Button variant="contained" href="./" size="small" color="error">
               reset
             </Button>
@@ -92,7 +92,7 @@ export const Result: FC<Props> = ({ state }) => {
               {
                 icon: (
                   <>
-                    <span className="rounded-full bg-gradient-to-r from-pink-300 to-purple-400 text-white text-[10px] leading-4 grid size-5 font-bold place-items-center">
+                    <span className="grid size-5 place-items-center rounded-full bg-gradient-to-r from-pink-300 to-purple-400 text-[10px] font-bold leading-4 text-white">
                       wild
                     </span>
                   </>

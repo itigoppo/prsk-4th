@@ -1,142 +1,67 @@
-"use client"
-import { RequiredBadge } from "@/app/components/atoms/RequiredBadge"
-import { UseCalcReturn } from "@/app/View/calc"
-import { loginSchedule } from "@/app/View/constant"
+import { Close } from "@mui/icons-material"
 import {
-  CheckBoxOutlineBlank,
-  CheckBoxOutlined,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-} from "@mui/icons-material"
-import { Button, Stack } from "@mui/material"
-import clsx from "clsx"
-import { FC, useEffect, useState } from "react"
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material"
+import { Dispatch, FC, SetStateAction } from "react"
+import { Confirm } from "./Confirm"
+import { Form } from "./Form"
 
-type Props = UseCalcReturn
+type Props = {
+  isOpen: boolean
+  setIsOpen: Dispatch<SetStateAction<boolean>>
+}
 
-export const Login: FC<Props> = ({ state, dispatch }) => {
-  const [isAllLogin, setIsAllLogin] = useState<boolean>(false)
-  const [expanded, setExpanded] = useState<boolean>(false)
-
-  useEffect(() => {
-    const checkedDays = loginSchedule.filter((item) =>
-      state.acquisition.loginDays.includes(item.day),
-    )
-    setIsAllLogin(checkedDays.length === loginSchedule.length)
-  }, [state.acquisition.loginDays])
+export const Login: FC<Props> = ({ isOpen, setIsOpen }) => {
+  const theme = useTheme()
+  const fullScreen = useMediaQuery(theme.breakpoints.down("md"))
+  const handleClose = () => {
+    setIsOpen(false)
+  }
 
   return (
     <>
       <div className="space-y-4">
-        <div className="text-cyan-700 font-bold border-cyan-700 border-l-8 pl-2">
-          ログインキャンペーン(〜10/31)
+        <div className="border-l-8 border-cyan-700 pl-2 font-bold text-cyan-700">
+          ログインキャンペーン<span className="text-pink-600">(〜10/31)</span>
         </div>
 
-        <div
-          onClick={() => {
-            setIsAllLogin((state) => !state)
-            if (isAllLogin) {
-              dispatch.acquisition.setLoginDays([])
-            } else {
-              dispatch.acquisition.setLoginDays(
-                loginSchedule.map((item) => item.day),
-              )
-            }
-          }}
-          className="hover:cursor-pointer"
+        <Dialog
+          open={isOpen}
+          scroll="paper"
+          onClose={handleClose}
+          fullScreen={fullScreen}
+          fullWidth={true}
         >
-          <Stack alignItems="center" direction="row" gap={1}>
-            {isAllLogin ? (
-              <CheckBoxOutlined className="text-teal-600" />
-            ) : (
-              <CheckBoxOutlineBlank />
-            )}
-            <div>すべての日程でログイン</div>
-            <RequiredBadge
-              required={{
-                white: loginSchedule.reduce(function (acc, obj) {
-                  return acc + obj.white
-                }, 0),
-                blue: loginSchedule.reduce(function (acc, obj) {
-                  return acc + obj.blue
-                }, 0),
-                green: loginSchedule.reduce(function (acc, obj) {
-                  return acc + obj.green
-                }, 0),
-                red: loginSchedule.reduce(function (acc, obj) {
-                  return acc + obj.red
-                }, 0),
-                orange: loginSchedule.reduce(function (acc, obj) {
-                  return acc + obj.orange
-                }, 0),
-                purple: loginSchedule.reduce(function (acc, obj) {
-                  return acc + obj.purple
-                }, 0),
-              }}
-            />
-          </Stack>
-        </div>
+          <DialogTitle>ログインキャンペーン(〜10/31)</DialogTitle>
+          <IconButton
+            aria-label="close"
+            onClick={handleClose}
+            sx={(theme) => ({
+              position: "absolute",
+              right: 8,
+              top: 8,
+              color: theme.palette.grey[500],
+            })}
+          >
+            <Close />
+          </IconButton>
 
-        <Button
-          variant={expanded ? "contained" : "outlined"}
-          size="small"
-          onClick={() => {
-            setExpanded((state) => !state)
-          }}
-          endIcon={expanded ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-        >
-          日程を個別でみる
-        </Button>
+          <DialogContent sx={{ m: 0, p: 1 }}>
+            <Form />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>OK</Button>
+          </DialogActions>
+        </Dialog>
 
-        <div className={clsx("grid grid-cols-2 gap-2", !expanded && "hidden")}>
-          {loginSchedule.map((schedule, index) => (
-            <div
-              key={index}
-              onClick={() => {
-                if (state.acquisition.loginDays.includes(schedule.day)) {
-                  dispatch.acquisition.setLoginDays(
-                    state.acquisition.loginDays.filter(
-                      (loginDay) => loginDay !== schedule.day,
-                    ),
-                  )
-                  setIsAllLogin(false)
-                } else {
-                  const uniqueLoginDays = [
-                    ...new Set(
-                      state.acquisition.loginDays.concat([schedule.day]),
-                    ),
-                  ]
-                  dispatch.acquisition.setLoginDays(uniqueLoginDays)
-
-                  const checkedDays = loginSchedule.filter((item) =>
-                    uniqueLoginDays.includes(item.day),
-                  )
-                  setIsAllLogin(checkedDays.length === loginSchedule.length)
-                }
-              }}
-              className="hover:cursor-pointer"
-            >
-              <Stack alignItems="center" direction="row" gap={1}>
-                {state.acquisition.loginDays.includes(schedule.day) ? (
-                  <CheckBoxOutlined className="text-teal-600" />
-                ) : (
-                  <CheckBoxOutlineBlank />
-                )}
-                <div>{schedule.day}</div>
-                <RequiredBadge
-                  required={{
-                    white: schedule.white,
-                    blue: schedule.blue,
-                    green: schedule.green,
-                    red: schedule.red,
-                    orange: schedule.orange,
-                    purple: schedule.purple,
-                  }}
-                />
-              </Stack>
-            </div>
-          ))}
-        </div>
+        <Confirm />
       </div>
     </>
   )

@@ -1,25 +1,62 @@
-import { UseCalcReturn } from "@/app/View/calc"
-import { FC } from "react"
+import { Close } from "@mui/icons-material"
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material"
+import { Dispatch, FC, SetStateAction } from "react"
+import { Confirm } from "./Confirm"
+import { Form } from "./Form"
 
-type Props = UseCalcReturn
+type Props = {
+  isOpen: boolean
+  setIsOpen: Dispatch<SetStateAction<boolean>>
+}
 
-export const AfterParty: FC<Props> = () => {
+export const AfterParty: FC<Props> = ({ isOpen, setIsOpen }) => {
+  const theme = useTheme()
+  const fullScreen = useMediaQuery(theme.breakpoints.down("md"))
+  const handleClose = () => {
+    setIsOpen(false)
+  }
+
   return (
     <>
-      <div className="space-y-4">
-        <div className="text-cyan-700 font-bold border-cyan-700 border-l-8 pl-2 flex gap-x-1">
-          <div>
-            後夜祭ガチャ<span className="text-pink-600">(10/21〜10/31)</span>
-          </div>
-          <div>
-            <span className="rounded-full bg-gradient-to-r from-pink-300 to-purple-400 text-white text-[10px] leading-4 grid size-5 font-bold place-items-center">
-              ?
-            </span>
-          </div>
-        </div>
+      <Dialog
+        open={isOpen}
+        scroll="paper"
+        onClose={handleClose}
+        fullScreen={fullScreen}
+        fullWidth={true}
+      >
+        <DialogTitle>後夜祭ガチャ(10/21〜10/31)</DialogTitle>
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={(theme) => ({
+            position: "absolute",
+            right: 8,
+            top: 8,
+            color: theme.palette.grey[500],
+          })}
+        >
+          <Close />
+        </IconButton>
 
-        <div>※現時点で詳細不明</div>
-      </div>
+        <DialogContent sx={{ m: 0, p: 1 }}>
+          <Form />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>OK</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Confirm />
     </>
   )
 }

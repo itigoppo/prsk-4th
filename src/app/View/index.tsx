@@ -1,27 +1,25 @@
 "use client"
 import { FC } from "react"
+import { FortuneFlowerContextProvider } from "../Context"
 import { Acquisition } from "./Acquisition"
-import { useCalc } from "./calc"
 import { Result } from "./Result"
 import { Reward } from "./Reward"
 
 export const View: FC = () => {
-  const useCalcProps = useCalc()
-
   return (
-    <>
-      <div className="min-h-screen bg-gray-100 space-y-4 py-4">
-        <header className="mx-auto max-w-7xl md:max-w-md px-4">
+    <FortuneFlowerContextProvider>
+      <div className="min-h-screen space-y-4 bg-gray-100 py-4">
+        <header className="mx-auto max-w-7xl px-4 md:max-w-md">
           プロセカ4周年
           <br />
           フォーチュンフラワーパレード計算機
         </header>
 
         <main className="mx-auto max-w-7xl md:max-w-md">
-          <div className="bg-white shadow-sm space-y-4 pt-4">
-            <Reward {...useCalcProps} />
-            <Acquisition {...useCalcProps} />
-            <Result {...useCalcProps} />
+          <div className="space-y-4 bg-white pt-4 shadow-sm">
+            <Reward />
+            <Acquisition />
+            <Result />
           </div>
         </main>
 
@@ -32,6 +30,6 @@ export const View: FC = () => {
           </a>
         </footer>
       </div>
-    </>
+    </FortuneFlowerContextProvider>
   )
 }

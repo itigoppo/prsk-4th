@@ -1,41 +1,62 @@
-import { UseCalcReturn } from "@/app/View/calc"
-import { CheckBoxOutlineBlank, CheckBoxOutlined } from "@mui/icons-material"
-import { Stack } from "@mui/material"
-import { FC } from "react"
+import { Close } from "@mui/icons-material"
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material"
+import { Dispatch, FC, SetStateAction } from "react"
+import { Confirm } from "./Confirm"
+import { Form } from "./Form"
 
-type Props = UseCalcReturn
+type Props = {
+  isOpen: boolean
+  setIsOpen: Dispatch<SetStateAction<boolean>>
+}
 
-export const HappinessBonus: FC<Props> = ({ state, dispatch }) => {
+export const HappinessBonus: FC<Props> = ({ isOpen, setIsOpen }) => {
+  const theme = useTheme()
+  const fullScreen = useMediaQuery(theme.breakpoints.down("md"))
+  const handleClose = () => {
+    setIsOpen(false)
+  }
+
   return (
     <>
-      <div className="space-y-4">
-        <div className="text-cyan-700 font-bold border-cyan-700 border-l-8 pl-2 flex gap-x-1">
-          <div>
-            ハピネスガチャ<span className="text-pink-600">(10/12〜10/21)</span>
-          </div>
-          <div>
-            <span className="rounded-full bg-gradient-to-r from-pink-300 to-purple-400 text-white text-[10px] leading-4 grid size-5 font-bold place-items-center">
-              2
-            </span>
-          </div>
-        </div>
-
-        <div
-          onClick={() => {
-            dispatch.acquisition.setIsHappiness((state) => !state)
-          }}
-          className="hover:cursor-pointer"
+      <Dialog
+        open={isOpen}
+        scroll="paper"
+        onClose={handleClose}
+        fullScreen={fullScreen}
+        fullWidth={true}
+      >
+        <DialogTitle>ハピネスガチャ(10/12〜10/21)</DialogTitle>
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={(theme) => ({
+            position: "absolute",
+            right: 8,
+            top: 8,
+            color: theme.palette.grey[500],
+          })}
         >
-          <Stack alignItems="center" direction="row" gap={1}>
-            {state.acquisition.isHappiness ? (
-              <CheckBoxOutlined className="text-teal-600" />
-            ) : (
-              <CheckBoxOutlineBlank />
-            )}
-            <div>おまけにワイルドフォーチュンフラワーを選択した</div>
-          </Stack>
-        </div>
-      </div>
+          <Close />
+        </IconButton>
+
+        <DialogContent sx={{ m: 0, p: 1 }}>
+          <Form />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>OK</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Confirm />
     </>
   )
 }
