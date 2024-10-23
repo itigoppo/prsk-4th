@@ -47,7 +47,7 @@ export const Confirm: FC<Props> = ({ times }) => {
 
   const upperLimit = useMemo(() => {
     const index = eventRankRange.findIndex(({ rank }) => rank === lowerLimit)
-    return index === 0 ? 0 : eventRankRange[index - 1].rank
+    return index === 0 ? 1 : eventRankRange[index - 1].rank + 1
   }, [lowerLimit])
 
   return (

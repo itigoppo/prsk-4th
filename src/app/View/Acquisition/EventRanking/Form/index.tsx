@@ -41,8 +41,10 @@ export const Form: FC<Props> = ({ times }) => {
                 <RadioButtonUnchecked />
               )}
               <div>
-                {eventRankRange[index - 1]?.rank ?? 1} -{" "}
-                {rank !== 0 && `${rank}位`}
+                {eventRankRange[index - 1]?.rank
+                  ? eventRankRange[index - 1]?.rank + 1
+                  : 1}{" "}
+                - {rank !== 0 && `${rank}位`}
               </div>
 
               <RequiredBadge
