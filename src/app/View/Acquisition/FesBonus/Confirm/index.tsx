@@ -15,7 +15,7 @@ export const Confirm: FC = () => {
           <div className="border-l-8 border-cyan-700 pl-2 font-bold text-cyan-700">
             <div>
               ブルフェスガチャボーナス
-              <span className="text-pink-600">(〜10/12)</span>
+              <span className="text-pink-600">(9/30〜10/12)</span>
             </div>
           </div>
 

@@ -22,6 +22,7 @@ export const Form: FC<Props> = ({ times }) => {
 
         <RequiredBadge
           required={{
+            wild: 0,
             white: times === 3 ? 5 : 0,
             blue: times === 3 ? 0 : 0,
             green: times === 1 ? 5 : 0,
@@ -77,6 +78,7 @@ export const Form: FC<Props> = ({ times }) => {
 
         <RequiredBadge
           required={{
+            wild: 0,
             white: times === 3 ? 0 : 0,
             blue: times === 3 ? 5 : 0,
             green: times === 1 ? 0 : 0,

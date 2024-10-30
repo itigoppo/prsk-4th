@@ -43,6 +43,7 @@ export const Form: FC = () => {
           <div className="font-bold text-pink-600">すべての日程でログイン</div>
           <RequiredBadge
             required={{
+              wild: 0,
               white: loginSchedule.reduce(function (acc, obj) {
                 return acc + obj.white
               }, 0),
@@ -103,6 +104,7 @@ export const Form: FC = () => {
               <div>{schedule.day}</div>
               <RequiredBadge
                 required={{
+                  wild: 0,
                   white: schedule.white,
                   blue: schedule.blue,
                   green: schedule.green,

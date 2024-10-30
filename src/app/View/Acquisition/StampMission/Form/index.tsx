@@ -916,6 +916,7 @@ export const Form: FC<Props> = ({ times }) => {
                               <div>{cardName}</div>
                               <RequiredBadge
                                 required={{
+                                  wild: 0,
                                   white:
                                     cardName.indexOf("ホワイト") !== -1
                                       ? stamp.missions.reduce(function (

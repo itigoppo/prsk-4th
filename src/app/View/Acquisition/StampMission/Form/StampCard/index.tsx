@@ -1026,7 +1026,7 @@ export const StampCard: FC<Props> = ({ times, type }) => {
                 <CheckBoxOutlineBlank />
               )}
               <div className="font-bold text-pink-600">コンプリート</div>
-              <RequiredBadge required={completeRequired} />
+              <RequiredBadge required={{ wild: 0, ...completeRequired }} />
             </Stack>
           </div>
 
@@ -1054,6 +1054,7 @@ export const StampCard: FC<Props> = ({ times, type }) => {
                   <div>{mission.substitute ?? mission.mission}</div>
                   <RequiredBadge
                     required={{
+                      wild: 0,
                       white: color === "white" ? mission.petals : 0,
                       blue: color === "blue" ? mission.petals : 0,
                       green: color === "green" ? mission.petals : 0,

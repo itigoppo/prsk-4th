@@ -133,6 +133,7 @@ export const Form: FC = () => {
 
         <RequiredBadge
           required={{
+            wild: 0,
             white: liveMissionSchedule.reduce(function (acc, obj) {
               return acc + obj.white
             }, 0),
@@ -174,6 +175,7 @@ export const Form: FC = () => {
 
         <RequiredBadge
           required={{
+            wild: 0,
             white: premiumLiveMissionSchedule.reduce(function (acc, obj) {
               return acc + obj.white
             }, 0),
@@ -257,6 +259,7 @@ export const Form: FC = () => {
                 <div>{point}</div>
                 <RequiredBadge
                   required={{
+                    wild: 0,
                     white:
                       getLiveMission(point).white +
                       (state.acquisition.isPremiumLiveMission

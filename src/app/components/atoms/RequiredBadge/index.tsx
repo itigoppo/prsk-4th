@@ -2,6 +2,7 @@ import { FC } from "react"
 
 type Props = {
   required: {
+    wild: number
     white: number
     blue: number
     green: number
@@ -14,6 +15,11 @@ type Props = {
 export const RequiredBadge: FC<Props> = ({ required }) => {
   return (
     <div className="flex gap-x-1">
+      {required.wild !== 0 && (
+        <span className="grid size-5 place-items-center rounded-full bg-gradient-to-r from-pink-300 to-purple-400 text-[10px] font-bold leading-4 text-white">
+          {required.wild}
+        </span>
+      )}
       {required.white !== 0 && (
         <span className="grid size-5 place-items-center rounded-full border border-slate-950 bg-white text-[10px] font-bold leading-4">
           {required.white}

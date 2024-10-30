@@ -12,13 +12,13 @@ export const Form: FC<Props> = ({ items }) => {
   return (
     <div className="space-y-2 text-sm">
       <Alert severity="info">手に入れたいアイテムの交換回数にチェック</Alert>
-      {items.map(({ label, selected, maximum, required, onClick }, index) => (
+      {items.map(({ label, selected, maximum, reward, onClick }, index) => (
         <div key={index} className="space-y-2">
           <Stack alignItems="center" direction="row" gap={1}>
             <div className="border-l-8 border-red-300 pl-2 font-bold">
               {label}
             </div>
-            <RequiredBadge required={{ wild: 0, ...required }} />
+            <RequiredBadge required={reward} />
           </Stack>
 
           <div className="grid grid-cols-3 gap-2">

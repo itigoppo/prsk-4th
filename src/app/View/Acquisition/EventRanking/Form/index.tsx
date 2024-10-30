@@ -49,6 +49,7 @@ export const Form: FC<Props> = ({ times }) => {
 
               <RequiredBadge
                 required={{
+                  wild: 0,
                   white: times === 3 ? petals : 0,
                   blue: times === 3 ? petals : 0,
                   green: times === 1 ? petals : 0,

@@ -34,7 +34,7 @@ export const FesBonus: FC<Props> = ({ isOpen, setIsOpen }) => {
         fullScreen={fullScreen}
         fullWidth={true}
       >
-        <DialogTitle>ブルフェスガチャボーナス(〜10/12)</DialogTitle>
+        <DialogTitle>ブルフェスガチャボーナス(9/30〜10/12)</DialogTitle>
         <IconButton
           aria-label="close"
           onClick={handleClose}

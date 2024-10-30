@@ -1,3 +1,4 @@
+import { RequiredBadge } from "@/app/components/atoms/RequiredBadge"
 import { useFortuneFlowerContext } from "@/app/Context"
 import { CheckBoxOutlineBlank, CheckBoxOutlined } from "@mui/icons-material"
 import { Alert, Stack } from "@mui/material"
@@ -24,9 +25,17 @@ export const Form: FC = () => {
           )}
           <div>混合寧々バナーのピックアップカードを所持している</div>
           <div>
-            <span className="grid size-5 place-items-center rounded-full bg-gradient-to-r from-pink-300 to-purple-400 text-[10px] font-bold leading-4 text-white">
-              1
-            </span>
+            <RequiredBadge
+              required={{
+                wild: 1,
+                white: 0,
+                blue: 0,
+                green: 0,
+                red: 0,
+                orange: 0,
+                purple: 0,
+              }}
+            />
           </div>
         </Stack>
       </div>

@@ -29,7 +29,7 @@ export const Form: FC<Props> = ({ items }) => {
                 <CheckBoxOutlineBlank />
               )}
               <div>{label}</div>
-              <RequiredBadge required={rewards} />
+              <RequiredBadge required={{ wild: 0, ...rewards }} />
             </Stack>
           </div>
         ))}

@@ -93,6 +93,13 @@ const FortuneFlowerContext = createContext<
           oclockEventRank: number
           vbsEventRank: number
           isHappiness: boolean
+          numberOfRewardAfterPartyStickerWild: number
+          numberOfRewardAfterPartyStickerWhite: number
+          numberOfRewardAfterPartyStickerBlue: number
+          numberOfRewardAfterPartyStickerGreen: number
+          numberOfRewardAfterPartyStickerRed: number
+          numberOfRewardAfterPartyStickerOrange: number
+          numberOfRewardAfterPartyStickerPurple: number
           stamp: {
             bloom: {
               selectedStampIroiro: StampLevel1Bloom
@@ -183,6 +190,27 @@ const FortuneFlowerContext = createContext<
           setOclockEventRank: Dispatch<SetStateAction<number>>
           setVbsEventRank: Dispatch<SetStateAction<number>>
           setIsHappiness: Dispatch<SetStateAction<boolean>>
+          setNumberOfRewardAfterPartyStickerWild: Dispatch<
+            SetStateAction<number>
+          >
+          setNumberOfRewardAfterPartyStickerWhite: Dispatch<
+            SetStateAction<number>
+          >
+          setNumberOfRewardAfterPartyStickerBlue: Dispatch<
+            SetStateAction<number>
+          >
+          setNumberOfRewardAfterPartyStickerGreen: Dispatch<
+            SetStateAction<number>
+          >
+          setNumberOfRewardAfterPartyStickerRed: Dispatch<
+            SetStateAction<number>
+          >
+          setNumberOfRewardAfterPartyStickerOrange: Dispatch<
+            SetStateAction<number>
+          >
+          setNumberOfRewardAfterPartyStickerPurple: Dispatch<
+            SetStateAction<number>
+          >
           stamp: {
             bloom: {
               setSelectedStampIroiro: Dispatch<SetStateAction<StampLevel1Bloom>>
@@ -487,6 +515,77 @@ export const FortuneFlowerContextProvider = ({
   // ハピネス
   const initialIsHappiness = !!searchParams.get("isHappiness")
   const [isHappiness, setIsHappiness] = useState<boolean>(initialIsHappiness)
+
+  // 後夜祭
+  // ワイルド
+  const initialNumberOfRewardAfterPartyStickerWild = parseInt(
+    searchParams.get("numberOfRewardAfterPartyStickerWild") ?? "0",
+    10,
+  )
+  const [
+    numberOfRewardAfterPartyStickerWild,
+    setNumberOfRewardAfterPartyStickerWild,
+  ] = useState<number>(initialNumberOfRewardAfterPartyStickerWild)
+
+  // 白
+  const initialNumberOfRewardAfterPartyStickerWhite = parseInt(
+    searchParams.get("numberOfRewardAfterPartyStickerWhite") ?? "0",
+    10,
+  )
+  const [
+    numberOfRewardAfterPartyStickerWhite,
+    setNumberOfRewardAfterPartyStickerWhite,
+  ] = useState<number>(initialNumberOfRewardAfterPartyStickerWhite)
+
+  // 青
+  const initialNumberOfRewardAfterPartyStickerBlue = parseInt(
+    searchParams.get("numberOfRewardAfterPartyStickerBlue") ?? "0",
+    10,
+  )
+  const [
+    numberOfRewardAfterPartyStickerBlue,
+    setNumberOfRewardAfterPartyStickerBlue,
+  ] = useState<number>(initialNumberOfRewardAfterPartyStickerBlue)
+
+  // 緑
+  const initialNumberOfRewardAfterPartyStickerGreen = parseInt(
+    searchParams.get("numberOfRewardAfterPartyStickerGreen") ?? "0",
+    10,
+  )
+  const [
+    numberOfRewardAfterPartyStickerGreen,
+    setNumberOfRewardAfterPartyStickerGreen,
+  ] = useState<number>(initialNumberOfRewardAfterPartyStickerGreen)
+
+  // 赤
+  const initialNumberOfRewardAfterPartyStickerRed = parseInt(
+    searchParams.get("numberOfRewardAfterPartyStickerRed") ?? "0",
+    10,
+  )
+  const [
+    numberOfRewardAfterPartyStickerRed,
+    setNumberOfRewardAfterPartyStickerRed,
+  ] = useState<number>(initialNumberOfRewardAfterPartyStickerRed)
+
+  // 橙
+  const initialNumberOfRewardAfterPartyStickerOrange = parseInt(
+    searchParams.get("numberOfRewardAfterPartyStickerOrange") ?? "0",
+    10,
+  )
+  const [
+    numberOfRewardAfterPartyStickerOrange,
+    setNumberOfRewardAfterPartyStickerOrange,
+  ] = useState<number>(initialNumberOfRewardAfterPartyStickerOrange)
+
+  // 紫
+  const initialNumberOfRewardAfterPartyStickerPurple = parseInt(
+    searchParams.get("numberOfRewardAfterPartyStickerPurple") ?? "0",
+    10,
+  )
+  const [
+    numberOfRewardAfterPartyStickerPurple,
+    setNumberOfRewardAfterPartyStickerPurple,
+  ] = useState<number>(initialNumberOfRewardAfterPartyStickerPurple)
 
   // スタンプミッション
   // BLOOM
@@ -1007,6 +1106,15 @@ export const FortuneFlowerContextProvider = ({
     if (isHappiness) {
       wild += 2
     }
+
+    // 後夜祭
+    wild += numberOfRewardAfterPartyStickerWild * 1
+    white += numberOfRewardAfterPartyStickerWhite * 10
+    blue += numberOfRewardAfterPartyStickerBlue * 10
+    green += numberOfRewardAfterPartyStickerGreen * 10
+    red += numberOfRewardAfterPartyStickerRed * 10
+    orange += numberOfRewardAfterPartyStickerOrange * 10
+    purple += numberOfRewardAfterPartyStickerPurple * 10
 
     // スタンプ
     // BLOOM
@@ -1856,6 +1964,13 @@ export const FortuneFlowerContextProvider = ({
     oclockEventRank,
     vbsEventRank,
     isHappiness,
+    numberOfRewardAfterPartyStickerWild,
+    numberOfRewardAfterPartyStickerWhite,
+    numberOfRewardAfterPartyStickerBlue,
+    numberOfRewardAfterPartyStickerGreen,
+    numberOfRewardAfterPartyStickerRed,
+    numberOfRewardAfterPartyStickerOrange,
+    numberOfRewardAfterPartyStickerPurple,
     selectedStampIroiroBloom,
     selectedStampLiveBloom,
     selectedStampKizunaBloom,
@@ -2093,6 +2208,50 @@ export const FortuneFlowerContextProvider = ({
       urlSearchParams.set("isHappiness", "1")
     }
 
+    // 後夜祭
+    if (numberOfRewardAfterPartyStickerWild) {
+      urlSearchParams.set(
+        "numberOfRewardAfterPartyStickerWild",
+        numberOfRewardAfterPartyStickerWild.toString(),
+      )
+    }
+    if (numberOfRewardAfterPartyStickerWhite) {
+      urlSearchParams.set(
+        "numberOfRewardAfterPartyStickerWhite",
+        numberOfRewardAfterPartyStickerWhite.toString(),
+      )
+    }
+    if (numberOfRewardAfterPartyStickerBlue) {
+      urlSearchParams.set(
+        "numberOfRewardAfterPartyStickerBlue",
+        numberOfRewardAfterPartyStickerBlue.toString(),
+      )
+    }
+    if (numberOfRewardAfterPartyStickerGreen) {
+      urlSearchParams.set(
+        "numberOfRewardAfterPartyStickerGreen",
+        numberOfRewardAfterPartyStickerGreen.toString(),
+      )
+    }
+    if (numberOfRewardAfterPartyStickerRed) {
+      urlSearchParams.set(
+        "numberOfRewardAfterPartyStickerRed",
+        numberOfRewardAfterPartyStickerRed.toString(),
+      )
+    }
+    if (numberOfRewardAfterPartyStickerOrange) {
+      urlSearchParams.set(
+        "numberOfRewardAfterPartyStickerOrange",
+        numberOfRewardAfterPartyStickerOrange.toString(),
+      )
+    }
+    if (numberOfRewardAfterPartyStickerPurple) {
+      urlSearchParams.set(
+        "numberOfRewardAfterPartyStickerPurple",
+        numberOfRewardAfterPartyStickerPurple.toString(),
+      )
+    }
+
     // スタンプ
     // BLOOM
     if (selectedStampIroiroBloom) {
@@ -2249,6 +2408,13 @@ export const FortuneFlowerContextProvider = ({
     oclockEventRank,
     vbsEventRank,
     isHappiness,
+    numberOfRewardAfterPartyStickerWild,
+    numberOfRewardAfterPartyStickerWhite,
+    numberOfRewardAfterPartyStickerBlue,
+    numberOfRewardAfterPartyStickerGreen,
+    numberOfRewardAfterPartyStickerRed,
+    numberOfRewardAfterPartyStickerOrange,
+    numberOfRewardAfterPartyStickerPurple,
     selectedStampIroiroBloom,
     selectedStampLiveBloom,
     selectedStampKizunaBloom,
@@ -2343,6 +2509,13 @@ export const FortuneFlowerContextProvider = ({
             oclockEventRank,
             vbsEventRank,
             isHappiness,
+            numberOfRewardAfterPartyStickerWild,
+            numberOfRewardAfterPartyStickerWhite,
+            numberOfRewardAfterPartyStickerBlue,
+            numberOfRewardAfterPartyStickerGreen,
+            numberOfRewardAfterPartyStickerRed,
+            numberOfRewardAfterPartyStickerOrange,
+            numberOfRewardAfterPartyStickerPurple,
             stamp: {
               bloom: {
                 selectedStampIroiro: selectedStampIroiroBloom,
@@ -2433,6 +2606,13 @@ export const FortuneFlowerContextProvider = ({
             setOclockEventRank,
             setVbsEventRank,
             setIsHappiness,
+            setNumberOfRewardAfterPartyStickerWild,
+            setNumberOfRewardAfterPartyStickerWhite,
+            setNumberOfRewardAfterPartyStickerBlue,
+            setNumberOfRewardAfterPartyStickerGreen,
+            setNumberOfRewardAfterPartyStickerRed,
+            setNumberOfRewardAfterPartyStickerOrange,
+            setNumberOfRewardAfterPartyStickerPurple,
             stamp: {
               bloom: {
                 setSelectedStampIroiro: setSelectedStampIroiroBloom,

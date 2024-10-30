@@ -2,7 +2,7 @@ import { ButtonSurface } from "@/app/components/atoms/ButtonSurface"
 import { Expander } from "@/app/components/atoms/Expander"
 import { Add } from "@mui/icons-material"
 import { FC, useState } from "react"
-import { AfterParty } from "./AfterParty"
+import { AfterPartySticker } from "./AfterPartySticker"
 import { Compensation } from "./Compensation"
 import { EventBadge } from "./EventBadge"
 import { EventRanking } from "./EventRanking"
@@ -36,7 +36,8 @@ export const Acquisition: FC = () => {
   const [isOpenStampMissionConnect, setIsOpenStampMissionConnect] =
     useState<boolean>(false)
 
-  const [isOpenAfterParty, setIsOpenAfterParty] = useState<boolean>(false)
+  const [isOpenAfterPartySticker, setIsOpenAfterPartySticker] =
+    useState<boolean>(false)
   const [isOpenEventBadgeCheer, setIsOpenEventBadgeCheer] =
     useState<boolean>(false)
   const [isOpenEventRankingCheer, setIsOpenEventRankingCheer] =
@@ -246,11 +247,11 @@ export const Acquisition: FC = () => {
           <div className="flex flex-wrap gap-x-4 gap-y-2">
             <ButtonSurface
               onClick={() => {
-                setIsOpenAfterParty((state) => !state)
+                setIsOpenAfterPartySticker((state) => !state)
               }}
               startIcon={<Add />}
             >
-              後夜祭ガチャ
+              フラワーアソートガチャ交換所
             </ButtonSurface>
 
             <ButtonSurface
@@ -281,9 +282,9 @@ export const Acquisition: FC = () => {
             </ButtonSurface>
           </div>
 
-          <AfterParty
-            isOpen={isOpenAfterParty}
-            setIsOpen={setIsOpenAfterParty}
+          <AfterPartySticker
+            isOpen={isOpenAfterPartySticker}
+            setIsOpen={setIsOpenAfterPartySticker}
           />
           <EventBadge
             isOpen={isOpenEventBadgeCheer}
