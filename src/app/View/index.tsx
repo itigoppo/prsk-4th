@@ -15,6 +15,10 @@ export const View: FC = () => {
           <ul className="space-y-4 px-4 text-sm">
             {[
               {
+                label: "4.5周年ワールドブルームキャンペーン('25/03/30〜04/08)",
+                url: pagesPath.$4_5th.$url(),
+              },
+              {
                 label: "4周年フォーチュンパレード('24/09/30〜10/31)",
                 url: pagesPath.$4th.$url(),
               },
