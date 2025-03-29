@@ -15,8 +15,8 @@ const geistMono = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "プロセカ4周年フォーチュンフラワーパレード",
-  description: "プロジェクトセカイ4周年のお花、花びら計算機",
+  title: "プロセカn周年キャンペーンの計算機",
+  description: "プロジェクトセカイn周年のキャンペーン計算機",
 }
 
 export default function RootLayout({

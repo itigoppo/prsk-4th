@@ -21,6 +21,7 @@
     "eslint-config-next": "14.2.14",
     "fixpack": "^4.0.0",
     "npm-run-all": "^4.1.5",
+    "pathpida": "^0.25.0",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-organize-imports": "^4.1.0",
@@ -32,6 +33,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev -p 15000",
+    "dev:path": "pathpida --ignorePath .gitignore --watch",
     "fix": "run-p --continue-on-error fix:*",
     "fix:css": "run-s fix:css:prettier",
     "fix:css:prettier": "prettier './**/*.css' --write",
@@ -41,6 +43,7 @@
     "fix:json": "prettier './**/*.json' --write",
     "fix:md": "prettier './**/*.md' --write",
     "fix:pack": "fixpack",
+    "generate:path": "pathpida --ignorepath .gitignore --output ./src/lib",
     "lint": "next lint",
     "start": "next start"
   }
